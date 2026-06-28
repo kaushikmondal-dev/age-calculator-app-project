@@ -1,17 +1,33 @@
 "use client";
 
+import {
+  format,
+  formatDistanceToNow,
+  isBefore,
+  startOfTomorrow,
+} from "date-fns";
 import { ChevronDownIcon } from "lucide-react";
+import { useState } from "react";
 import { Button } from "./shadcnui/button";
 import { Calendar } from "./shadcnui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./shadcnui/popover";
 
 const BasicAgeCalculator = () => {
+  const [inputDate, setInputDate] = useState<Date | undefined>(undefined);
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="grid gap-6">
       <h1 className="text-center text-xl font-semibold">
-        Select Your Date Of Birth
+        {inputDate ?
+          isBefore(inputDate, startOfTomorrow()) ?
+            `You are ${formatDistanceToNow(inputDate)} old`
+          : `You are ${formatDistanceToNow}(inputDate) old`
+        : "Select your date of birth"}
       </h1>
-      <Popover>
+      <Popover
+        open={open}
+        onOpenChange={setOpen}>
         <PopoverTrigger
           render={
             <Button
@@ -21,7 +37,7 @@ const BasicAgeCalculator = () => {
               aria-label="Select your date of birth"
             />
           }>
-          Pick a date
+          {inputDate ? format(inputDate, "PPPP") : "Pick a date"}
           <ChevronDownIcon />
         </PopoverTrigger>
         <PopoverContent
@@ -30,6 +46,11 @@ const BasicAgeCalculator = () => {
           <Calendar
             mode="single"
             captionLayout="dropdown"
+            selected={inputDate}
+            onSelect={(date) => {
+              setInputDate(date);
+              setOpen(false);
+            }}
           />
         </PopoverContent>
       </Popover>
