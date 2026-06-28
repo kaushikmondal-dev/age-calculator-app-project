@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ThemeToggleButton from "../ThemeToggleButton";
 
 const Header = () => {
   return (
@@ -11,14 +10,13 @@ const Header = () => {
           <h1
             className="text-2xl font-semibold"
             aria-label="App Name">
-            NSP App
+            Age Calculator App
           </h1>
         </Link>
 
         <nav className="flex items-center gap-4">
-          <Link href={"/"}>Home</Link>
-
-          <ThemeToggleButton />
+          <Link href={"/"}>Basic</Link>
+          <Link href={"/advanced"}>Advanced</Link>
         </nav>
       </div>
     </header>
