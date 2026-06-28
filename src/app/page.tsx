@@ -1,3 +1,4 @@
+import BasicAgeCalculator from "@/components/BasicAgeCalculator";
 import { Card, CardHeader, CardTitle } from "@/components/shadcnui/card";
 import { Metadata } from "next";
 
@@ -15,6 +16,7 @@ const page = () => {
             Basic Age Calculator
           </CardTitle>
         </CardHeader>
+        <BasicAgeCalculator />
       </Card>
     </section>
   );
