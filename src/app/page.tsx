@@ -1,17 +1,21 @@
+import { Card, CardHeader, CardTitle } from "@/components/shadcnui/card";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nextjs Starter Frontend",
-  description: "Production grade Next.js starter template",
+  title: "Basic age calculator",
+  description: "Basic | age calculator project",
 };
 
 const page = () => {
   return (
     <section className="grid h-[90dvh] place-items-center">
-      <div className="space-y-2 text-center">
-        <h1 className="text-5xl font-semibold">Nextjs Starter Frontend</h1>
-        <h2 className="text-3xl">Production grade Next.js starter template</h2>
-      </div>
+      <Card className="h-65 w-md">
+        <CardHeader>
+          <CardTitle className="text-center text-2xl">
+            Basic Age Calculator
+          </CardTitle>
+        </CardHeader>
+      </Card>
     </section>
   );
 };
